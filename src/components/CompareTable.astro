@@ -1,0 +1,32 @@
+---
+interface Item {
+  name: string;
+  price: string;
+  rating: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<table class="my-6 w-full border-collapse overflow-hidden rounded-lg border border-gray-200 text-left text-sm">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="p-3 font-semibold">商品名</th>
+      <th class="p-3 font-semibold">価格</th>
+      <th class="p-3 font-semibold">評価</th>
+    </tr>
+  </thead>
+  <tbody>
+    {items.map((item) => (
+      <tr class="border-t border-gray-200">
+        <td class="p-3">{item.name}</td>
+        <td class="p-3">{item.price}</td>
+        <td class="p-3">{item.rating}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

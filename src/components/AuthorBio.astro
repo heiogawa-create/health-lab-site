@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: string;
+  bio?: string;
+  avatarUrl?: string;
+}
+
+const { name, bio = '', avatarUrl = '/favicon.svg' } = Astro.props;
+---
+
+<div class="my-8 flex items-center gap-4 rounded-lg border border-gray-200 p-4">
+  <img src={avatarUrl} alt={name} class="h-12 w-12 rounded-full object-cover" />
+  <div>
+    <p class="font-semibold text-gray-900">{name}</p>
+    {bio && <p class="text-sm text-gray-600">{bio}</p>}
+  </div>
+</div>

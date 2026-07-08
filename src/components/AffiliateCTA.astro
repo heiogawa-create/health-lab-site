@@ -1,0 +1,21 @@
+---
+interface Props {
+  label?: string;
+  url: string;
+  productName: string;
+}
+
+const { label = '公式サイトで詳細を見る', url, productName } = Astro.props;
+---
+
+<div class="my-6 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+  <p class="mb-2 font-semibold text-emerald-900">{productName}</p>
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer sponsored"
+    class="inline-block rounded-md bg-emerald-600 px-5 py-2 font-medium text-white transition hover:bg-emerald-700"
+  >
+    {label}
+  </a>
+</div>
