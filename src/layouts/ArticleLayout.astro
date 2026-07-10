@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CharacterMascot from '../components/CharacterMascot.astro';
 
 interface Props {
   title: string;
@@ -18,16 +19,35 @@ const { title, description = '' } = Astro.props;
   </head>
   <body class="bg-white text-gray-900">
     <header class="border-b border-gray-200 p-4">
-      <a href="/" class="font-bold">Health Lab</a>
+      <a href="/" class="flex items-center gap-2 font-bold">
+        <img
+          src="/images/character/hey-fairy-check.png"
+          alt=""
+          class="h-9 w-9 object-contain"
+          aria-hidden="true"
+        />
+        ヘイの健康ラボ
+      </a>
     </header>
     <main class="mx-auto max-w-3xl px-4 py-8">
       <article class="prose max-w-none">
         <h1 class="mb-4 text-3xl font-bold">{title}</h1>
         <slot />
       </article>
+      <CharacterMascot
+        pose="check"
+        size="md"
+        message="最後まで読んでいただきありがとうございます！気になる症状や転職の悩みは、ひとりで抱え込まず専門家にも相談してくださいね。"
+      />
     </main>
     <footer class="border-t border-gray-200 p-4 text-center text-sm text-gray-500">
-      &copy; {new Date().getFullYear()} Health Lab
+      <img
+        src="/images/character/hey-fairy-note.png"
+        alt="ヘイの健康ラボのイメージキャラクター"
+        class="mx-auto mb-2 h-14 w-14 object-contain"
+        loading="lazy"
+      />
+      &copy; {new Date().getFullYear()} ヘイの健康ラボ
     </footer>
   </body>
 </html>
