@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export const prerender = true;
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+  (a, b) => (b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0)
+);
+
+const dateFormat = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title="ヘイの健康ラボ | 医療・介護職の転職と健康の情報サイト"
+  description="理学療法士ヘイが、医療・介護職の転職、健康、リハビリに関する情報をお届けします。"
+>
+  <section class="mb-10">
+    <h1 class="mb-4 text-3xl font-bold">ヘイの健康ラボ</h1>
+    <p class="text-gray-700">
+      理学療法士のヘイが、医療・介護職の転職やキャリア、健康・リハビリの情報を現場目線でお届けします。
+    </p>
+  </section>
+
+  <section>
+    <h2 class="mb-4 text-xl font-bold">記事一覧</h2>
+    {
+      articles.length === 0 ? (
+        <p class="text-gray-500">まだ記事がありません。</p>
+      ) : (
+        <ul class="divide-y divide-gray-200 border-t border-gray-200">
+          {articles.map((article) => (
+            <li class="py-4">
+              <a href={`/articles/${article.id}/`} class="block hover:opacity-70">
+                <div class="mb-1 flex items-center gap-2 text-sm text-gray-500">
+                  {article.data.pubDate && (
+                    <time datetime={article.data.pubDate.toISOString()}>
+                      {dateFormat.format(article.data.pubDate)}
+                    </time>
+                  )}
+                  {article.data.category && (
+                    <span class="rounded bg-gray-100 px-2 py-0.5 text-gray-700">
+                      {article.data.category}
+                    </span>
+                  )}
+                </div>
+                <h3 class="text-lg font-bold">{article.data.title}</h3>
+                {article.data.description && (
+                  <p class="mt-1 text-sm text-gray-600">{article.data.description}</p>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>

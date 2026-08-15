@@ -10,6 +10,11 @@ const articles = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     pubDate: z.coerce.date().optional(),
+    category: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    author: z.string().optional(),
+    supervised: z.boolean().default(false),
+    draft: z.boolean().default(false),
   }),
 });
 
