@@ -19,13 +19,21 @@
 本記事はアフィリエイト広告を含みます。紹介している商品・サービスの選定はすべて編集部の独自基準によるものです。
 
 ### 2. 監修者プロフィールブロック
-記事の最上部（PR表記の直後）と最下部の2か所に必ず挿入すること。
----
-**監修者プロフィール**
-**ヘイ**（理学療法士）
-理学療法士として15年以上の臨床経験を持つ。急性期・回復期・生活期にわたる幅広いリハビリ現場を経験し、現在はWebメディアを通じて医療・健康・転職情報を発信。
-保有資格：理学療法士（国家資格）
----
+記事の最上部（PR表記の直後）と最下部の2か所に、以下のHTMLブロックをそのまま必ず挿入すること。
+`---` で囲む書き方はMarkdownの見出し記法（setext heading）と解釈され、プロフィール全体が巨大なH2として出力されてしまうため使わないこと。
+
+```html
+<aside class="not-prose my-8 rounded-xl border border-slate-200 bg-slate-50 p-5 sm:flex sm:gap-4">
+  <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-50 font-bold text-brand-700 ring-1 ring-brand-100">ヘイ</div>
+  <div class="mt-3 sm:mt-0">
+    <p class="text-xs font-medium tracking-wide text-slate-500">監修者プロフィール</p>
+    <p class="mt-1 font-bold text-slate-900">ヘイ（理学療法士）</p>
+    <p class="mt-2 text-sm leading-relaxed text-slate-600">理学療法士として15年以上の臨床経験を持つ。急性期・回復期・生活期にわたる幅広いリハビリ現場を経験し、現在はWebメディアを通じて医療・健康・転職情報を発信。</p>
+    <p class="mt-3 text-xs text-slate-500">保有資格：理学療法士（国家資格）</p>
+  </div>
+</aside>
+```
+
 15年の部分はそのまま「15年以上」で出力すること。
 
 ### 3. 体験談ブロック（YMYL対策・最重要）

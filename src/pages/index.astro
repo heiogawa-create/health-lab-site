@@ -13,50 +13,130 @@ const dateFormat = new Intl.DateTimeFormat('ja-JP', {
   month: 'long',
   day: 'numeric',
 });
+
+const categoryStyles: Record<string, string> = {
+  転職: 'bg-blue-50 text-blue-700 ring-blue-100',
+  健康: 'bg-brand-50 text-brand-700 ring-brand-100',
+  リハビリ: 'bg-amber-50 text-amber-700 ring-amber-100',
+};
+const defaultCategoryStyle = 'bg-slate-100 text-slate-600 ring-slate-200';
 ---
 
 <BaseLayout
   title="ヘイの健康ラボ | 医療・介護職の転職と健康の情報サイト"
-  description="理学療法士ヘイが、医療・介護職の転職、健康、リハビリに関する情報をお届けします。"
+  description="理学療法士ヘイが、医療・介護職の転職、健康、リハビリに関する情報を現場目線でお届けします。"
 >
-  <section class="mb-10">
-    <h1 class="mb-4 text-3xl font-bold">ヘイの健康ラボ</h1>
-    <p class="text-gray-700">
-      理学療法士のヘイが、医療・介護職の転職やキャリア、健康・リハビリの情報を現場目線でお届けします。
+  <section
+    class="overflow-hidden rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 via-white to-white p-8 shadow-sm sm:p-11"
+  >
+    <p
+      class="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-medium text-brand-700 ring-1 ring-brand-100"
+    >
+      <span class="size-1.5 rounded-full bg-brand-500"></span>
+      現役理学療法士が運営
     </p>
+    <h1 class="mt-5 text-2xl font-bold leading-snug tracking-tight text-slate-900 sm:text-4xl">
+      医療・介護の現場を、もう少し働きやすく。
+    </h1>
+    <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-600">
+      理学療法士のヘイが、PT・OT・STをはじめとする医療・介護職のための転職とキャリア、
+      そして健康・リハビリの情報を、15年以上の臨床経験をもとに現場目線でまとめています。
+    </p>
+    <div class="mt-7 flex flex-wrap gap-2">
+      {
+        ['転職・キャリア', '健康', 'リハビリ'].map((label) => (
+          <span class="rounded-lg bg-white px-3 py-1.5 text-sm text-slate-600 shadow-sm ring-1 ring-slate-200">
+            {label}
+          </span>
+        ))
+      }
+    </div>
   </section>
 
-  <section>
-    <h2 class="mb-4 text-xl font-bold">記事一覧</h2>
+  <section class="mt-12">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 class="text-xl font-bold text-slate-900">記事一覧</h2>
+      <span class="text-sm text-slate-500">全 {articles.length} 記事</span>
+    </div>
+
     {
       articles.length === 0 ? (
-        <p class="text-gray-500">まだ記事がありません。</p>
+        <p class="mt-6 rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500">
+          まだ記事がありません。
+        </p>
       ) : (
-        <ul class="divide-y divide-gray-200 border-t border-gray-200">
+        <ul class="mt-6 space-y-4">
           {articles.map((article) => (
-            <li class="py-4">
-              <a href={`/articles/${article.id}/`} class="block hover:opacity-70">
-                <div class="mb-1 flex items-center gap-2 text-sm text-gray-500">
+            <li>
+              <a
+                href={`/articles/${article.id}/`}
+                class="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md sm:p-7"
+              >
+                <div class="flex flex-wrap items-center gap-2.5 text-xs text-slate-500">
+                  {article.data.category && (
+                    <span
+                      class={`rounded-full px-2.5 py-1 font-medium ring-1 ${
+                        categoryStyles[article.data.category] ?? defaultCategoryStyle
+                      }`}
+                    >
+                      {article.data.category}
+                    </span>
+                  )}
                   {article.data.pubDate && (
                     <time datetime={article.data.pubDate.toISOString()}>
                       {dateFormat.format(article.data.pubDate)}
                     </time>
                   )}
-                  {article.data.category && (
-                    <span class="rounded bg-gray-100 px-2 py-0.5 text-gray-700">
-                      {article.data.category}
+                  {article.data.supervised && (
+                    <span class="text-slate-400">監修：ヘイ（理学療法士）</span>
+                  )}
+                </div>
+
+                <h3 class="mt-3 text-lg font-bold leading-snug text-slate-900 transition group-hover:text-brand-700 sm:text-xl">
+                  {article.data.title}
+                </h3>
+
+                {article.data.description && (
+                  <p class="mt-2.5 line-clamp-3 text-sm leading-relaxed text-slate-600">
+                    {article.data.description}
+                  </p>
+                )}
+
+                <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <span class="inline-flex items-center gap-1 text-sm font-medium text-brand-700">
+                    続きを読む
+                    <span class="inline-block transition group-hover:translate-x-0.5">→</span>
+                  </span>
+                  {article.data.tags.length > 0 && (
+                    <span class="text-xs text-slate-400">
+                      {article.data.tags.map((tag) => `#${tag}`).join('  ')}
                     </span>
                   )}
                 </div>
-                <h3 class="text-lg font-bold">{article.data.title}</h3>
-                {article.data.description && (
-                  <p class="mt-1 text-sm text-gray-600">{article.data.description}</p>
-                )}
               </a>
             </li>
           ))}
         </ul>
       )
     }
+  </section>
+
+  <section
+    class="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:flex sm:items-start sm:gap-5 sm:p-7"
+  >
+    <div
+      class="flex size-14 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xl font-bold text-brand-700 ring-1 ring-brand-100"
+    >
+      ヘイ
+    </div>
+    <div class="mt-4 sm:mt-0">
+      <p class="text-xs font-medium tracking-wide text-slate-500">運営者・監修者</p>
+      <p class="mt-1 font-bold text-slate-900">ヘイ（理学療法士）</p>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">
+        理学療法士として15年以上の臨床経験を持つ。急性期・回復期・生活期にわたる幅広いリハビリ現場を経験し、
+        現在はWebメディアを通じて医療・健康・転職情報を発信。
+      </p>
+      <p class="mt-3 text-xs text-slate-500">保有資格：理学療法士（国家資格）</p>
+    </div>
   </section>
 </BaseLayout>

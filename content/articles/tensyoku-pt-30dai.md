@@ -11,12 +11,15 @@ draft: false
 
 **[PR]** 本記事にはアフィリエイトリンクが含まれます。
 
----
-**監修者プロフィール**
-**ヘイ**（理学療法士）
-理学療法士として15年以上の臨床経験を持つ。急性期・回復期・生活期にわたる幅広いリハビリ現場を経験し、現在はWebメディアを通じて医療・健康・転職情報を発信。
-保有資格：理学療法士（国家資格）
----
+<aside class="not-prose my-8 rounded-xl border border-slate-200 bg-slate-50 p-5 sm:flex sm:gap-4">
+  <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-50 font-bold text-brand-700 ring-1 ring-brand-100">ヘイ</div>
+  <div class="mt-3 sm:mt-0">
+    <p class="text-xs font-medium tracking-wide text-slate-500">監修者プロフィール</p>
+    <p class="mt-1 font-bold text-slate-900">ヘイ（理学療法士）</p>
+    <p class="mt-2 text-sm leading-relaxed text-slate-600">理学療法士として15年以上の臨床経験を持つ。急性期・回復期・生活期にわたる幅広いリハビリ現場を経験し、現在はWebメディアを通じて医療・健康・転職情報を発信。</p>
+    <p class="mt-3 text-xs text-slate-500">保有資格：理学療法士（国家資格）</p>
+  </div>
+</aside>
 
 30代になり、理学療法士としてのキャリアを積み重ねてきた今だからこそ、「このまま今の職場で働き続けていいのだろうか」「もっと自分に合った働き方があるのではないか」と感じ始める方は少なくありません。20代の頃は目の前の業務を覚えることに必死で、転職について考える余裕すらなかったという方も多いでしょう。しかし30代に差しかかると、給与や将来のキャリアパス、体力的な負担、ライフステージの変化など、さまざまな要因が重なり、転職というキーワードが現実味を帯びてくるものです。周囲の同期が管理職に就いたり、逆に転職して環境を変えたりする姿を見て、自分自身のキャリアについて立ち止まって考える機会も増えてくる時期ではないでしょうか。
 
@@ -527,12 +530,15 @@ draft: false
 <!-- ASPリンクここ: マイナビコメディカル -->
 <!-- ASPリンクここ: レバウェルリハビリ -->
 
----
-**監修者プロフィール**
-**ヘイ**（理学療法士）
-理学療法士として15年以上の臨床経験を持つ。急性期・回復期・生活期にわたる幅広いリハビリ現場を経験し、現在はWebメディアを通じて医療・健康・転職情報を発信。
-保有資格：理学療法士（国家資格）
----
+<aside class="not-prose my-8 rounded-xl border border-slate-200 bg-slate-50 p-5 sm:flex sm:gap-4">
+  <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-50 font-bold text-brand-700 ring-1 ring-brand-100">ヘイ</div>
+  <div class="mt-3 sm:mt-0">
+    <p class="text-xs font-medium tracking-wide text-slate-500">監修者プロフィール</p>
+    <p class="mt-1 font-bold text-slate-900">ヘイ（理学療法士）</p>
+    <p class="mt-2 text-sm leading-relaxed text-slate-600">理学療法士として15年以上の臨床経験を持つ。急性期・回復期・生活期にわたる幅広いリハビリ現場を経験し、現在はWebメディアを通じて医療・健康・転職情報を発信。</p>
+    <p class="mt-3 text-xs text-slate-500">保有資格：理学療法士（国家資格）</p>
+  </div>
+</aside>
 
 ---
 本記事はアフィリエイト広告を含みます。紹介している商品・サービスの選定はすべて編集部の独自基準によるものです。

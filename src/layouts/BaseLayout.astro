@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, description = '' } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
 <html lang="ja">
@@ -14,17 +15,58 @@ const { title, description = '' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="ヘイの健康ラボ" />
     <title>{title}</title>
   </head>
-  <body class="bg-white text-gray-900">
-    <header class="border-b border-gray-200 p-4">
-      <a href="/" class="font-bold">ヘイの健康ラボ</a>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <header
+      class="sticky top-0 z-20 border-b border-slate-200 bg-white/85 backdrop-blur-sm"
+    >
+      <div class="mx-auto flex max-w-4xl items-center gap-3 px-5 py-3.5">
+        <a href="/" class="flex items-center gap-2.5 transition hover:opacity-80">
+          <span
+            class="flex size-9 items-center justify-center rounded-xl bg-brand-600 text-white shadow-sm"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-5"
+              aria-hidden="true"
+            >
+              <path d="M3 12h3.5l2-5 3.5 10 2.5-6 1.5 3H21" />
+            </svg>
+          </span>
+          <span class="leading-tight">
+            <span class="block text-base font-bold text-slate-900">ヘイの健康ラボ</span>
+            <span class="block text-[11px] text-slate-500">転職・健康・リハビリの現場から</span>
+          </span>
+        </a>
+      </div>
     </header>
-    <main class="mx-auto max-w-3xl px-4 py-8">
+
+    <main class="mx-auto max-w-4xl px-5 py-10">
       <slot />
     </main>
-    <footer class="border-t border-gray-200 p-4 text-center text-sm text-gray-500">
-      &copy; {new Date().getFullYear()} ヘイの健康ラボ
+
+    <footer class="mt-16 border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-4xl px-5 py-10">
+        <p class="text-sm font-bold text-slate-900">ヘイの健康ラボ</p>
+        <p class="mt-1.5 text-sm text-slate-600">
+          運営者：ヘイ（理学療法士） / 医療・介護職の転職と健康の情報サイト
+        </p>
+        <p class="mt-4 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-500">
+          本サイトはアフィリエイト広告を含みます。紹介している商品・サービスの選定はすべて編集部の独自基準によるものです。
+          健康・症状に関する内容は情報提供を目的としたものであり、診断・治療を目的とするものではありません。気になる症状がある場合は医師・専門家へご相談ください。
+        </p>
+        <p class="mt-5 text-xs text-slate-400">&copy; {year} ヘイの健康ラボ</p>
+      </div>
     </footer>
   </body>
 </html>

@@ -1,2 +1,28 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @config "../../tailwind.config.mjs";
+
+@theme {
+  --color-brand-50: oklch(0.97 0.02 165);
+  --color-brand-100: oklch(0.94 0.04 165);
+  --color-brand-500: oklch(0.68 0.13 165);
+  --color-brand-600: oklch(0.58 0.12 165);
+  --color-brand-700: oklch(0.48 0.1 165);
+  --color-brand-900: oklch(0.3 0.06 165);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 体験談ブロックの引用符（typographyプラグインの自動挿入）を消す */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
+body {
+  font-family:
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic",
+    "Meiryo", system-ui, sans-serif;
+}
